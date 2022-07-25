@@ -32,12 +32,7 @@ pipeline {
                     publishers: [
                         sshPublisherDesc(
                             configName: "activity-client",
-                            verbose: true,
-                            transfers: [
-                                sourceFiles: "target/*.jar",
-                                remoteDirectory: "/opt/cicd",
-                                removePrefix: "target/",
-                            ]
+                            verbose: true
                         )
                     ]
                 )
