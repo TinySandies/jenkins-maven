@@ -32,7 +32,7 @@ pipeline {
                     publishers: [
                         sshPublisherDesc(
                             configName: "activity-client",
-                            transfers: [sshTransfer(sourceFiles: 'target/')],
+                            transfers: [sshTransfer(sourceFiles: 'target/', remoteDirectory: '/opt/cicd', removePrefix: 'target/')],
                             verbose: true
                         )
                     ]
