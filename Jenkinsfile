@@ -32,7 +32,7 @@ pipeline {
                     publishers: [
                         sshPublisherDesc(
                             configName: "activity-client",
-                            transfers: [sshTransfer(sourceFiles: '*.jar')],
+                            transfers: [sshTransfer(sourceFiles: 'target/')],
                             verbose: true
                         )
                     ]
