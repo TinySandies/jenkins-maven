@@ -24,6 +24,26 @@ pipeline {
                 }
             }
         }
+        
+        stage('SSH transfer') {
+            steps([$class: 'BapSshPromotionPublisherPlugin']) {
+                sshPublisher(
+                    continueOnError: false, failOnError: true,
+                    publishers: [
+                        sshPublisherDesc(
+                            configName: "activity-client",
+                            verbose: true,
+                            transfers: [
+                                sourceFiles: "target/*.jar",
+                                remoteDirectory: "/opt/cicd",
+                                removePrefix: "target/",
+                            ]
+                        )
+                    ]
+                )
+            }
+        }
+        
     }
 
 }
